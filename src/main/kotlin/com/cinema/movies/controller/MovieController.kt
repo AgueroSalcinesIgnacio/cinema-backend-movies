@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController
 class MovieController(private val movieService: MovieService) {
     @GetMapping
     fun getMovies(): ResponseEntity<List<MovieResponse>> {
-
         return try {
             ResponseEntity.ok(movieService.getMovies())
         } catch (exception: Exception) {

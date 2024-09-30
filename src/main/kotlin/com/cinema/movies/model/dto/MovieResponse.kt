@@ -12,9 +12,9 @@ import lombok.ToString
 @Setter
 @ToString
 data class MovieResponse(
-    val id: Long,
-    val title: String?,
-    var releaseYear: Int?,
-    var rating: Double?
+    var id: Long? = null,
+    var title: String? = null,
+    var releaseYear: Int? = null,
+    var rating: Double? = null
 )
 

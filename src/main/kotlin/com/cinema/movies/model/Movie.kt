@@ -4,21 +4,19 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
-import lombok.AllArgsConstructor
+import lombok.EqualsAndHashCode
 import lombok.Getter
-import lombok.NoArgsConstructor
 import lombok.Setter
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@EqualsAndHashCode
 @Entity(name = "movies")
 data class Movie(
     @Id
-    @Column(name = "id") var id: Long,
-    @Column(name = "title") var title: String?,
-    @Column(name = "release_year") var releaseYear: Int?,
-    @Column(name = "rating") var rating: Double?
+    @Column(name = "id") var id: Long? = null,
+    @Column(name = "title") var title: String? = null,
+    @Column(name = "release_year") var releaseYear: Int? = null,
+    @Column(name = "rating") var rating: Double? = null
 )

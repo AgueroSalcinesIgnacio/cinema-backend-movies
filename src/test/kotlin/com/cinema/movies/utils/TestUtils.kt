@@ -14,8 +14,16 @@ class TestUtils {
         const val RELEASE_YEAR = 2024;
         const val RATING = 5.5;
 
+        fun getMovie(): Movie {
+            return Movie(ID, TITLE, RELEASE_YEAR, RATING)
+        }
+
+        fun getMovieResponse(): MovieResponse {
+            return MovieResponse(ID, TITLE, RELEASE_YEAR, RATING)
+        }
+
         fun getMovies(): List<Movie> {
-            return listOf(Movie(ID, TITLE, RELEASE_YEAR, RATING))
+            return listOf(getMovie())
         }
 
         fun getMoviesMapped(): List<MovieResponse> {

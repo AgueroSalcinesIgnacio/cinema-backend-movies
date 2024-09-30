@@ -3,6 +3,7 @@ package com.cinema.movies.integration
 import com.cinema.movies.model.dto.MovieResponse
 import com.cinema.movies.service.MovieService
 import com.cinema.movies.utils.TestUtils
+import com.cinema.users.config.error.exception.GenericException
 import com.ninjasquad.springmockk.MockkBean
 import io.mockk.every
 import org.junit.jupiter.api.Test
@@ -31,5 +32,13 @@ class MovieControllerIntegrationTest(@Autowired val mockMvc: MockMvc) {
             .andExpect(jsonPath("$[0].title").value(TestUtils.TITLE))
             .andExpect(jsonPath("$[0].rating").value(TestUtils.RATING))
             .andExpect(jsonPath("$[0].releaseYear").value(TestUtils.RELEASE_YEAR));
+    }
+
+    @Test
+    fun getAllMovies_whenGetRequest_thenReturnsExceptionWithStatus400() {
+        every { movieService.getMovies() } throws GenericException("test");
+
+        mockMvc.perform(get("/movies"))
+            .andExpect(status().isBadRequest);
     }
 }
